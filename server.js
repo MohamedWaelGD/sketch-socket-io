@@ -6,8 +6,11 @@ const cors = require('cors');
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
+const home = require("./routes/home");
 
 app.use(cors());
+
+app.use("/home", home);
 
 io.on('connection', (socket) => {
   console.log('A user connected');

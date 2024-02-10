@@ -5,7 +5,10 @@ const cors = require('cors');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIO(server);
+const io = socketIO(server, {
+  pingTimeout: 60000, // 60 seconds
+  pingInterval: 25000, // 25 seconds
+});
 const home = require("./routes/home");
 
 app.use(cors());
